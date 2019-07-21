@@ -1,0 +1,51 @@
+<article class="container">
+  <div class="m20" *ngIf="product">
+    <h4 class="center-align">상품 상세</h4>
+    <div class="center-align">
+      <img src="{{product.img}}">
+      <h5>{{product.title}}</h5>
+    </div>
+    <table class="striped">
+      <colgroup>
+        <col width="100px">
+      </colgroup>
+      <tbody>
+        <tr>
+          <th>제품명</th>
+          <td>{{product.name}}</td>
+        </tr>
+        <tr>
+          <th>가격</th>
+          <td>
+            <span *ngIf="product.sale==true; else elseBlock">{{product.salePrice|comma}} <del>{{product.price|comma}}</del></span>
+            <ng-template #elseBlock>
+              {{product.price|comma}}
+            </ng-template>
+          </td>
+        </tr>
+        <tr>
+          <th>소개</th>
+          <td>{{product.description}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="center-align m20 btn-group">
+      <button class="btn waves-effect red lighten-1" (click)="addToCart(product)">장바구니담기</button>
+      <button class="btn modal-trigger" data-target="modal1">배송안내</button>
+    </div>
+  </div>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>배송안내</h4>
+      <div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
+        <span>{{ shipping.type }} </span>
+        <span>{{ shipping.price | comma }}</span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-close waves-effect waves-green btn-flat">닫기</button>
+    </div>
+  </div>
+</article> 

@@ -1,0 +1,35 @@
+<article class="container">
+  <!-- <div class="row">
+    <div class="col s12 m6 l4">
+      <div class="card">
+        <div class="card-image">
+          <img src="assets/img/friends_apeach.jpg">
+          <span class="card-title">어피치(Apeach)</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p>유전자 변이로 자웅동주가 된 것을 알고 
+              복숭아 나무에서 탈출한 악동 복숭아 어피치! 
+              섹시한 뒷태로 사람들을 매혹시키며, 
+              성격이 매우 급하고 과격합니다.</p>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="row m20">
+    <div class="col s12 m6 l4" *ngFor="let product of products; index as productId">
+      <div class="card">
+        <div class="card-image">
+          <img src="{{product.img}}">
+          <span class="card-title">{{product.name}}</span>
+          <span class="sale chip red lighten-1 white-text" *ngIf="product.sale==true">Sale</span>
+          <a class="btn-floating halfway-fab waves-effect waves-light red"
+              routerLink="/category/{{productId}}"><i class="material-icons">add</i></a>
+        </div>
+        <div class="card-content">
+          <p>{{product.title}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

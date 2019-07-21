@@ -1,0 +1,13 @@
+.card .card-image .card-title{
+  top:0; bottom: auto;
+}
+.card-content p{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.sale {
+  position: absolute;
+  left:20px;
+  bottom: 10px;
+}

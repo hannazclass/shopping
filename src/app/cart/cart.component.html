@@ -1,0 +1,57 @@
+<article class="container">
+  <div class="row">
+    <h4 class="center-align">장바구니</h4>
+    
+    <ul class="collection with-header">
+      <li class="collection-item active">주문수량 <span class="secondary-content">{{totalCount}}</span></li>
+      <div *ngIf="items.length==0; then thenBlock else elseBlock"></div>
+      <ng-template #elseBlock>
+        <li class="collection-item" *ngFor="let item of items">
+          {{ item.name }}
+          <span *ngIf="item.sale==true; else elseBlock"><span class="secondary-content">{{ item.salePrice | comma }}</span></span>
+          <ng-template #elseBlock>
+              <span class="secondary-content">{{item.price|comma}}</span>
+          </ng-template>
+        </li>
+      </ng-template>
+      <ng-template #thenBlock><li class="collection-item">장바구니에 담긴 상품이 없습니다.</li></ng-template>
+      <li class="collection-item active right-align">합계 {{totalPrice|comma}}</li>
+    </ul>
+
+    
+    <h5>배송정보 입력</h5>
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">person</i>
+          <input id="name" type="text" class="validate" formControlName="name">
+          <label for="name">이름</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix">local_shipping</i>
+          <input id="address" type="text" class="validate" formControlName="address">
+          <label for="address">배송주소</label>
+        </div>
+      </div>
+      <div class="btn-group center">
+        <button class="btn waves-effect red lighten-1" type="submit">주문하기</button>
+        <button class="btn modal-trigger" data-target="modal1">배송안내</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>배송안내</h4>
+      <div class="shipping-item" *ngFor="let shipping of shippingCosts | async">
+        <span>{{ shipping.type }} </span>
+        <span>{{ shipping.price | comma }}</span>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-close waves-effect waves-green btn-flat">닫기</button>
+    </div>
+  </div>
+</article>

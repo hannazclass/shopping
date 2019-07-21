@@ -1,0 +1,35 @@
+<!-- <header>
+  <h1><a routerLink="/">카카오프렌즈</a></h1>
+  <nav>
+    <button class="material-icons">menu</button>
+    <ul>
+      <li><a routerLink="/category">카테고리</a></li>
+      <li><a routerLink="/story">스토리</a></li>
+      <li><a routerLink="/store">매장안내</a></li>
+      <li><a routerLink="/customer">고객센터</a></li>
+    </ul>
+  </nav>
+</header> -->
+
+<nav>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo center">카카오프렌즈</a>
+    <a href="#!" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li routerLinkActive="active"><a routerLink="/category">카테고리</a></li>
+      <li routerLinkActive="active"><a routerLink="/story">스토리</a></li>
+      <li routerLinkActive="active"><a routerLink="/store">매장안내</a></li>
+      <li routerLinkActive="active"><a routerLink="/customer">고객센터</a></li>
+      <li routerLinkActive="active"><a routerLink="/cart"><i class="material-icons dp48">shopping_cart</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-demo">
+  <li><a routerLink="/category">카테고리</a></li>
+  <li><a routerLink="/story">스토리</a></li>
+  <li><a routerLink="/store">매장안내</a></li>
+  <li><a routerLink="/customer">고객센터</a></li>
+  <li><a routerLink="/cart">장바구니</a></li>
+</ul>
+
